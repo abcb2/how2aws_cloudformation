@@ -30,15 +30,21 @@
         }
       }
     },
-    "instanceif3fdcb01": {
+    "instanceSample01": {
       "Type": "AWS::EC2::Instance",
       "Properties": {
         "DisableApiTermination": "FALSE",
         "ImageId": "ami-21072820",
-        "InstanceType": "t2.micro",
+        "InstanceType": "m1.small",
         "KernelId": "aki-176bf516",
-        "KeyName": "myebs test",
+        "KeyName": "cfn-sample-key",
         "Monitoring": "false"
+      }
+    },
+    "EIPforinstanceSample01": {
+      "Type": "AWS::EC2::EIP",
+      "Properties": {
+        "InstanceId": {"Ref": "instanceSample01"}
       }
     }
   },
