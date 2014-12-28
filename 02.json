@@ -1,0 +1,46 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Resources": {
+    "vpcCfnSample": {
+      "Type": "AWS::EC2::VPC",
+      "Properties": {
+        "CidrBlock": "192.168.0.0/16",
+        "InstanceTenancy": "default",
+        "EnableDnsSupport": "true",
+        "EnableDnsHostnames": "true"
+      }
+    },
+    "subnetBlue": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "CidrBlock": "192.168.0.0/17",
+        "AvailabilityZone": "ap-northeast-1a",
+        "VpcId": {
+          "Ref": "vpcCfnSample"
+        }
+      }
+    },
+    "subnetGreen": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "CidrBlock": "192.168.128.0/17",
+        "AvailabilityZone": "ap-northeast-1c",
+        "VpcId": {
+          "Ref": "vpcCfnSample"
+        }
+      }
+    },
+    "instanceif3fdcb01": {
+      "Type": "AWS::EC2::Instance",
+      "Properties": {
+        "DisableApiTermination": "FALSE",
+        "ImageId": "ami-21072820",
+        "InstanceType": "t2.micro",
+        "KernelId": "aki-176bf516",
+        "KeyName": "myebs test",
+        "Monitoring": "false"
+      }
+    }
+  },
+  "Description": "02.json"
+}
